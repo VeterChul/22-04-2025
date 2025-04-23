@@ -12,7 +12,9 @@ with open('text.txt') as f:
         pickle.dump(f.read(), b)
 
 with open("text_by_cod", "wb") as b:
-    pickle.dump(r, b)
+	bins = int(r, 2).to_bytes(len(r)//8, "big")
+    b.write (bins)
+
 
 
 print(r)
