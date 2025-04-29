@@ -13,7 +13,7 @@ with open("text_by_cod.bnr", "wb") as c:
         for i in text:
             r += code[i]
             for j in code[i]:
-                c.write(struct.pack("?", bool(int(j))))
+                c.write(int(r, 2))
         with open("text_by.bnr", "wb") as b:
             pickle.dump(text, b)
 
