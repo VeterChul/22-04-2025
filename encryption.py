@@ -1,18 +1,23 @@
 import pickle
+import struct
 s = input()
 
 exec(s)
 
 r = ""
 
-with open('text.txt') as f:
-    for i in f.read():
-        r += code[i]
-    with open("text_by", "wb") as b:
-        pickle.dump(f.read(), b)
+with open("text_by_cod.bnr", "wb") as c:    
 
-with open("text_by_cod", "wb") as b:
-    pickle.dump(r, b)
+    with open('text.txt') as f:
+        text = f.read()
+        for i in text:
+            r += code[i]
+            for j in code[i]:
+                c.write(struct.pack("?", bool(int(j))))
+        with open("text_by.bnr", "wb") as b:
+            pickle.dump(text, b)
+
+    
 
 
-print(r)
+
